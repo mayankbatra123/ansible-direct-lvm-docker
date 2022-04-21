@@ -1,0 +1,17 @@
+---
+# Set to True if using a custom storage configuration
+docker_use_custom_storage: true
+
+# Storage Options for devicemapper
+storage_driver: devicemapper
+secondary_device: /dev/sdb
+thinp_percent: 95
+thinp_metapercent: 1
+autoextend_threshold: 80
+autoextend_percent: 20
+directlvm_device_force: false
+
+docker_systemd_setup: true
+
+package_name: docker
+service_name: "docker"

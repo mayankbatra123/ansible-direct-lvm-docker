@@ -1,0 +1,13 @@
+{% if docker_use_custom_storage %}
+{
+  "storage-driver": "{{ storage_driver }}",
+  "storage-opts": [
+    "dm.directlvm_device= {{ secondary_device }}",
+    "dm.thinp_percent= {{ thinp_percent }}",
+    "dm.thinp_metapercent= {{ thinp_metapercent }}",
+    "dm.thinp_autoextend_threshold= {{ autoextend_threshold }}",
+    "dm.thinp_autoextend_percent= {{ autoextend_percent }}",
+    "dm.directlvm_device_force= {{ directlvm_device_force }}"
+  ]
+}
+{% endif %}

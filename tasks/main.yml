@@ -1,0 +1,27 @@
+---
+- name: Load OS ('{{ ansible_distribution }}') specific vars
+  include_vars: '{{ ansible_distribution }}.yml'
+
+- name: Ensure latest package
+  package:
+    name: '{{ package_name }}'
+    state: latest
+
+- name: Stop {{ service_name }}
+  service:
+    name: '{{ service_name }}'
+    state: stopped
+  register: stop_status
+
+- name: Create docker daemon json file
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+#  notify: Reload docker
+
+- name: Reload {{ service_name }}
+  become: true
+  service:
+    name: '{{ service_name }}'
+    state: started
+
