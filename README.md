@@ -24,7 +24,7 @@ Example Playbook
 ```yml
 - hosts: servers
   roles:
-    - ansible-docker-direct-lvm
+    - ansible-direct-lvm-docker
 ```
 
 License
